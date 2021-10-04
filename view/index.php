@@ -5,7 +5,7 @@
     <title>Re-Read</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="icon" href="./img/icon.png">
 
 </head>
@@ -24,9 +24,9 @@
     <div class="row">
         <div class="column middle">
             <div class="topnav">
-                <a href="index.html" class="active">Re-Read</a>
-                <a href="view/libros.html">Libros</a>
-                <a href="view/ebooks.html">eBooks</a>
+                <a href="index.php" class="active">Re-Read</a>
+                <a href="libros.html">Libros</a>
+                <a href="ebooks.html">eBooks</a>
             </div>
             <div class="textpage">
                 <h3>Nunca la lectura ha sido tan necesaria</h3>
