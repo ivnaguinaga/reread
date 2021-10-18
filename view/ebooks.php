@@ -5,7 +5,7 @@
     <title>Re-Read ebooks</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="icon" href="../img/icon.png">
 
 </head>
@@ -25,8 +25,8 @@
         <div class="column middle">
             <div class="topnav">
                 <a href="../index.php">Re-Read</a>
-                <a href="libros.html">Libros</a>
-                <a href="ebooks.html" class="active">eBooks</a>
+                <a href="libros.php">Libros</a>
+                <a href="ebooks.php" class="active">eBooks</a>
             </div>
             <div class="textpage">
                 <h3>Toda la actualidad en eBook</h3>
@@ -65,6 +65,25 @@
             <p>El general en su laberinto.</p>
         </div>
     </div>
+
+    <div>
+    <?php
+        // 1. Conexión con la base de datos	
+        include '../services/connection.php';
+
+        // 2. Selección y muestra de datos de la base de datos
+        $result = mysqli_query($conn, "SELECT Books.Title FROM Books WHERE eBook != '0'");
+
+        if (!empty($result) && mysqli_num_rows($result) > 0) {
+        // datos de salida de cada fila (fila = row)
+            while ($row = mysqli_fetch_array($result)) {
+            echo "<p>".$row['Title']."</p>";
+            }
+        } else {
+            echo "0 resultados";
+        }
+    ?>
+</div>
 
 </body>
 
