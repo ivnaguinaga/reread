@@ -52,17 +52,34 @@
                 </tr>
                 <!-- Recoger libros de la base de datos -->
                 <?php
-                $tabla="books";
-                $sql="SELECT {$tabla}.Title, {$tabla}.Description FROM {$tabla} INNER JOIN booksauthors ON {$tabla}.Id=booksauthors.BookId WHERE ";
-                $libros = mysqli_query($conn,$sql);
-                foreach ($libros as $libro) {
-                    ?>
-                    <tr>
-                    <td><?php echo"{$libro['Title']}";?></td>
-                    <td><?php echo"{$libro['Description']}";?></td>
-                    <td><?php echo"{$libro['Name']}";?></td>
-                </tr>
-                <?php
+                if (isset($_POST['titulo'])) {
+                    $filtro=$_POST['titulo'];
+                    $txt_query="SELECT books.Title,books.Description,authors.name 
+                    FROM books 
+                    INNER JOIN booksauthors ON books.Id=booksauthors.BookId 
+                    INNER JOIN authors ON booksauthors.AuthorId=authors.Id
+                    WHERE books.Title like '%{$filtro}%';";
+                    $qry_libros=mysqli_query($conn,$txt_query);
+                    foreach ($qry_libros as $libro) {
+                        echo "<tr>"; 
+                        echo "<td>".$libro['Title']."</td>";
+                        echo "<td>".$libro['Description']."</td>";
+                        echo "<td>".$libro['name']."</td>";
+                        echo "</tr>";
+                    }
+                }else{
+                    $txt_query="SELECT books.Title,books.Description,authors.name 
+                    FROM books 
+                    INNER JOIN booksauthors ON books.Id=booksauthors.BookId 
+                    INNER JOIN authors ON booksauthors.AuthorId=authors.Id;";
+                    $qry_libros=mysqli_query($conn,$txt_query);
+                    foreach ($qry_libros as $libro) {
+                        echo "<tr>";
+                        echo "<td>".$libro['Title']."</td>";
+                        echo "<td>".$libro['Description']."</td>";
+                        echo "<td>".$libro['name']."</td>";
+                        echo "</tr>";
+                    }
                 }
                 ?>
             </table>
