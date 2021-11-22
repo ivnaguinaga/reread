@@ -1,8 +1,9 @@
 function validar() {
     let email = document.getElementById('email').value
     let pass = document.getElementById('password').value
-    if (email == "" || password == "") {
-        alert("Hay un campo vacio")
+    if (email == "" || pass == "") {
+        document.getElementById('mensaje').innerText = "email* contraseña*"
         return false
     }
+
 }
