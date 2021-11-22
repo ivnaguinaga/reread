@@ -23,7 +23,7 @@
     }
     ?>
     <ul class="padding-lat">
-        <li><a>Hola <?php echo $_SESSION['email'];?></a></li>
+        <li><a>Hola Random</a></li>
         <li class="right">
             <a href="../processes/logout.proc.php">Logout</a>
         </li>
